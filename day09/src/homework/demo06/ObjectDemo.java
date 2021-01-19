@@ -9,10 +9,8 @@ public class ObjectDemo {
         Person p1 = new Person();
         System.out.println(p1.toString());
 
-        /*Person p2 = new Person();
-        System.out.println(p1.equals(p2));  //没重写equals返回false*/
-
         Person p2 = new Person();
-        System.out.println(p1.equals(p2));  //true
+        System.out.println(p1 == p2);   //false
+        System.out.println(p1.equals(p2));  //重写equals方法后true
     }
 }
