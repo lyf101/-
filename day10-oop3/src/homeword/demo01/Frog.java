@@ -1,0 +1,9 @@
+package homeword.demo01;
+
+/**
+ * Date:2021/1/20 18:40
+ * Author:lyf
+ */
+public class Frog extends Animal implements IWalkable,ISwimable{
+
+}
