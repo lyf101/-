@@ -37,10 +37,6 @@ public class User  {
         return emailAdrr;
     }
 
-    public void setEmailAdrr(String emailAdrr) {
-        this.emailAdrr = emailAdrr;
-    }
-
     @Override
     public String toString() {
         return "User{" +
