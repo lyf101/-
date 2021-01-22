@@ -23,4 +23,5 @@ public class NetworkOperator implements IInternet,ICall{
     public void setType(String type) {
         this.type = type;
     }
+
 }

@@ -9,6 +9,7 @@ public abstract class Seater {
 
     public abstract void maned();
 
+
     public String getBrand() {
         return brand;
     }
