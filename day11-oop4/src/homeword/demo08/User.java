@@ -8,7 +8,7 @@ public class User {
     private String id;
     private String username;
     private String password;
-    private String emailAddr = username + "@gameschool.com";
+    private String emailAddr;
     private static int totalUser = 0;
 
     public User() {
@@ -35,6 +35,7 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+        this.emailAddr = username + "@gameschool.com";
     }
 
     public String getPassword() {
