@@ -3,7 +3,9 @@ package homework.demo12;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Date:2021/1/25 20:54
@@ -11,18 +13,19 @@ import java.util.Date;
  */
 public class Demo {
     public static void main(String[] args) throws ParseException {
-        String str = "name=小红&age=17&salary=8000.00&hireDate=1991-07-03;" +
-                "name=小明&age=23&salary=10000.00&hireDate=1992-12-11;" +
+        String str = "name=小红&age=17&salary=8000.00&hireDate=1991-07-03;name=小明&age=23&salary=10000.00&hireDate=1992-12-11;" +
                 "name=小白&age=18&salary=12000.00&hireDate=1996-01-09";
-
         Employee employee1 = new Employee();
         Employee employee2 = new Employee();
         Employee employee3 = new Employee();
         Employee[] employees = {employee1, employee2, employee3};
+
         String[] split1 = str.split(";");
         int i = 0;
+        //第一次切割：；
         for (String s1 : split1) {
             String[] split2 = s1.split("&");
+            //第二次切割：& name=小红
             for (String s2 : split2) {
                 if (s2.startsWith("name")) {
                     String[] split3 = s2.split("=");
@@ -42,19 +45,27 @@ public class Demo {
             }
             i++;
         }
+
         BigDecimal money = new BigDecimal("0.0");
         double num = 0;
 
         for (Employee e : employees) {
-            if (e.getHireDate().getYear() < 1997) {
+            if (e.getHireDate().getYear() < 96) {
                 BigDecimal salary = e.getSalary();
                 money = money.add(salary);
                 num++;
             }
+            System.out.println(e);
         }
+
 
         BigDecimal divide = money.divide(BigDecimal.valueOf(num));
         System.out.println(divide);
+
+/*        Date date = new Date();
+        System.out.println(date);
+        Calendar calendar = Calendar.getInstance();
+        System.out.println(calendar);*/
 
 
     }
