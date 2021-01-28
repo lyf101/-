@@ -5,6 +5,8 @@ package homework.demo06;
  * Author:lyf
  */
 public class ArraySreachDemo {
+
+
     public static int binSreach(int[] arr, int key, int low, int high) {
         int mid = (low + high) / 2;
         if (key == arr[mid]) {
