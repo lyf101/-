@@ -1,6 +1,7 @@
 package homework.demo002;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Date:2021/1/28 20:50
@@ -46,6 +47,7 @@ public class Test {
             }
         }
         System.out.println(sum*1.0/num);
+
 
     }
 }
