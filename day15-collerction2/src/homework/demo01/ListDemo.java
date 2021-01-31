@@ -1,6 +1,8 @@
 package homework.demo01;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -27,5 +29,14 @@ public class ListDemo {
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
+
+
+        Collections.sort(list, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Integer.valueOf(o2)-Integer.valueOf(o1);
+            }
+        });
+        System.out.println(list);
     }
 }

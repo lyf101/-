@@ -4,7 +4,7 @@ package homework.demo07;
  * Date:2021/1/30 18:52
  * Author:lyf
  */
-public class User implements Comparable<User> {
+public class User {
     private String name;
     private int age;
 
@@ -56,14 +56,5 @@ public class User implements Comparable<User> {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + age;
         return result;
-    }
-
-    @Override
-    public int compareTo(User o) {
-        if (this.name.length() > o.name.length()) {
-            return 1;
-        } else if (this.name.length() < o.name.length()) {
-            return -1;
-        } else return this.age - o.age;
     }
 }
