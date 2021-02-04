@@ -7,7 +7,7 @@ package day23_24.demo08;
 public class Test1 {
     public static void main(String[] args) {
         double land = 0.08;
-        double zolmo = 884813000;
+        double zolmo = 8848130;
         int num = 0;
         while (land < zolmo) {
             land *= 2;
