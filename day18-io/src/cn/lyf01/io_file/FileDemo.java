@@ -18,6 +18,7 @@ public class FileDemo {
         try {
             InputStream inputStream = new FileInputStream(file);
             byte[] arr = new byte[5];
+
             int len = inputStream.read(arr);
             System.out.println(Arrays.toString(arr));
             inputStream.close();
