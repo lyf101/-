@@ -22,7 +22,7 @@ import java.io.InputStream;
  * Date:2021/3/2 20:49
  * Author:lyf
  */
-public class XMLLoad {
+public class XMLLoadDemo {
     public void xmlLoad1() throws ParserConfigurationException, IOException, SAXException {
 
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
@@ -57,17 +57,17 @@ public class XMLLoad {
 
 
         Element a1 = document.createElement("新一层");
-        Element b3 = document.createElement("二层");
         Element b1 = document.createElement("二层");
         Element b2 = document.createElement("二层");
+        Element b3 = document.createElement("二层");
 
 
 
 
         a1.setAttribute("name","newA1");
-        b3.setAttribute("name","最里层");
         b1.setTextContent("最里层");
         b2.setTextContent("最里层");
+        b3.setAttribute("name","最里层");
 
         a1.appendChild(b1);
         a1.appendChild(b2);
