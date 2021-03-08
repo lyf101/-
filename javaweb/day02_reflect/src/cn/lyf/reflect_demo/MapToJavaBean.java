@@ -1,7 +1,6 @@
 package cn.lyf.reflect_demo;
 
 import java.beans.BeanInfo;
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
@@ -29,11 +28,14 @@ public class MapToJavaBean {
         System.out.println(person);
     }
 
+    //<T>表明将使用泛型
     private static <T>T mapToJavaBean(Map<String, Object> map, Class<T> clazz) throws Exception {
 
         T t = clazz.newInstance();
 
+        //通过内省方式获取Bean的信息Introspector.getBeanInfo(字节码对象，stop字节码对象)
         BeanInfo beanInfo = Introspector.getBeanInfo(clazz, Object.class);
+        //通过Bean对象获取属性描述器
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
         for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
             String name = propertyDescriptor.getName();
