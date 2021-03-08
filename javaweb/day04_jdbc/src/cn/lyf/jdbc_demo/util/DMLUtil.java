@@ -44,13 +44,14 @@ public final class DMLUtil {
 
         Connection connection = JDBCUtil.getConnection();
         PreparedStatement pstmt = null;
+        ResultSet resultSet = null;
         List<Student> list = new LinkedList<>();
         try {
             pstmt = connection.prepareStatement(sql);
             for (int i = 0; i < objects.length; i++) {
                 pstmt.setObject(i+1,objects[i]);
             }
-            ResultSet resultSet = pstmt.executeQuery();
+            resultSet = pstmt.executeQuery();
             while (resultSet.next()){
                 Student student = new Student();
                 student.setId(resultSet.getInt("id"));
@@ -60,6 +61,8 @@ public final class DMLUtil {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            JDBCUtil.release(resultSet,connection,pstmt);
         }
         return list;
     }

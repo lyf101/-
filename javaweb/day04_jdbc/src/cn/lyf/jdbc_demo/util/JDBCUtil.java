@@ -1,9 +1,6 @@
 package cn.lyf.jdbc_demo.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 /**
@@ -38,6 +35,17 @@ public final class JDBCUtil {
 
 
     public static void release(Connection conn, PreparedStatement pstmt){
+        release(null,conn,pstmt);
+    }
+
+    public static void release(ResultSet resultSet,Connection conn, PreparedStatement pstmt){
+        if (resultSet!=null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         if (conn != null){
             try {
                 conn.close();
