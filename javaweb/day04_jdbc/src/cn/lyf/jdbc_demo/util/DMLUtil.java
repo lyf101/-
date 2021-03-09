@@ -3,6 +3,10 @@ package cn.lyf.jdbc_demo.util;
 
 import cn.lyf.jdbc_demo.domain.Student;
 
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,26 +44,41 @@ public final class DMLUtil {
         }
     }
 
-    public static List<Student> query(String sql,Object...objects){
+    public static <T> List<T> query(String sql,Class<T> clazz,Object...objects){
 
         Connection connection = JDBCUtil.getConnection();
         PreparedStatement pstmt = null;
         ResultSet resultSet = null;
-        List<Student> list = new LinkedList<>();
+        List<T> list = new LinkedList<>();
         try {
+            //获取javabean描述对象
+            BeanInfo beanInfo = Introspector.getBeanInfo(clazz,Object.class);
+
             pstmt = connection.prepareStatement(sql);
             for (int i = 0; i < objects.length; i++) {
                 pstmt.setObject(i+1,objects[i]);
             }
+            //获取查询结果集
             resultSet = pstmt.executeQuery();
             while (resultSet.next()){
-                Student student = new Student();
-                student.setId(resultSet.getInt("id"));
-                student.setName(resultSet.getString("name"));
-                student.setAge(resultSet.getInt("age"));
-                list.add(student);
+
+                //创建泛型对象
+                T t = clazz.newInstance();
+                //获取属性描述器数组
+                PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+                //遍历属性描述器
+                for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+                    //获取属性的名称，作为列名
+                    String name = propertyDescriptor.getName();
+                    //获取写方法
+                    Method writeMethod = propertyDescriptor.getWriteMethod();
+                    //执行写入方法，值为通过列名获取的结果集
+                    writeMethod.invoke(t,resultSet.getObject(name));
+                }
+
+                list.add(t);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }finally {
             JDBCUtil.release(resultSet,connection,pstmt);

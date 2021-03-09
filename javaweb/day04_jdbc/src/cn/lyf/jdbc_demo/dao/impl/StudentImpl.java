@@ -15,7 +15,6 @@ public class StudentImpl implements IStudentDao {
     public void insert(Student student) {
         String sql = "insert into student values(null,?,?)";
         DMLUtil.update(sql,student.getName(),student.getAge());
-
     }
 
     @Override
