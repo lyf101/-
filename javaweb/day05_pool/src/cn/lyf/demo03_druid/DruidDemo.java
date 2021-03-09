@@ -9,5 +9,6 @@ import java.sql.Connection;
 public class DruidDemo {
     public static void main(String[] args) {
         Connection connection = DruidUtil.getConnection();
+        System.out.println(connection);
     }
 }

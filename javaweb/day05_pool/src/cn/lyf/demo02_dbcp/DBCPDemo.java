@@ -10,6 +10,7 @@ import java.sql.Connection;
 public class DBCPDemo {
     public static void main(String[] args){
         Connection connection = DBCPUtil.getConnection();
+        System.out.println(connection);
     }
 
 }

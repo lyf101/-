@@ -33,7 +33,7 @@ public class StudentImpl implements IStudentDao {
     @Override
     public Student selectById(int id) {
         String sql = "select * from student where id = ?";
-        List<Student> query = DMLUtil.query(sql, id);
+        List<Student> query = DMLUtil.query(sql,Student.class, id);
         if (query!=null&&query.size()>0){
             return query.get(0);
         }
@@ -44,7 +44,7 @@ public class StudentImpl implements IStudentDao {
     @Override
     public List<Student> selectAll() {
         String sql = "select * from student";
-        List<Student> query = DMLUtil.query(sql);
+        List<Student> query = DMLUtil.query(sql,Student.class);
         return query;
     }
 }
