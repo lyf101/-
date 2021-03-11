@@ -33,6 +33,8 @@ public class ReflectTest {
         Object zhangsan = declaredConstructor1.newInstance("张三", 15);
         System.out.println(zhangsan);
 
+
+
         //通过字节码对象直接创建实例（无参）
         Object obj = aClass.newInstance();
 

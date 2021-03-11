@@ -35,12 +35,20 @@ public class MapToJavaBean {
 
         //通过内省方式获取Bean的信息Introspector.getBeanInfo(字节码对象，stop字节码对象)
         BeanInfo beanInfo = Introspector.getBeanInfo(clazz, Object.class);
+
         //通过Bean对象获取属性描述器
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+
+
         for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+
             String name = propertyDescriptor.getName();
             Object value = map.get(name);
             propertyDescriptor.getWriteMethod().invoke(t,value);
+
+
+
         }
         return t;
 
@@ -54,6 +62,8 @@ public class MapToJavaBean {
         PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
 
         for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+
+
             if (propertyDescriptor.getName().equals("name")){
                 Method writeMethod = propertyDescriptor.getWriteMethod();
                 writeMethod.invoke(o,"张三");

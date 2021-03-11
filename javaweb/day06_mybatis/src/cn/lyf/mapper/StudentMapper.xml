@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--配置名称空间-->
+<mapper namespace="cn.lyf.mapper.IStudentMapper">
+    <insert id="insert">
+        insert into student(userName,sex,birthYear,grade,collegeID) values (#{username},#{sex},#{birthday},#{grade},#{collegeID})
+    </insert>
+
+    <delete id="deleteById" parameterType="int">
+        delete from student where userid = #{id}
+    </delete>
+
+    <update id="update">
+        update student set userName=#{username},sex=#{sex},birthYear=#{birthday},grade=#{grade},collegeID=#{collegeID} where userID = #{id}
+    </update>
+
+    <!--resultType==>返回值封装的类型-->
+    <select id="selectById" resultType="Student">
+        select * from student where userID = #{id}
+    </select>
+
+    <select id="selectAll" resultType="Student">
+        select * from student
+    </select>
+</mapper>
