@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置db文件-->
+    <properties resource="db.properties"/>
+
+    <!--配置实例别称-->
+    <typeAliases>
+        <!--用包的形式导入-->
+        <package name="cn.lyf.domain"/>
+    </typeAliases>
+
+    <!--配置环境-->
+    <environments default="envelopment">
+        <environment id="envelopment">
+            <!--事务管理-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置映射文件路径-->
+    <mappers>
+        <mapper resource="cn/lyf/mapper/GoodsMapper.xml"/>
+    </mappers>
+
+</configuration>

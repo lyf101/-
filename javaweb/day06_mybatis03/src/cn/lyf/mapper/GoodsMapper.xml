@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--配置映射名称空间-->
+<mapper namespace="cn.lyf.mapper.GoodsMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into goods(name,price,detail) values (#{name},#{price},#{detail})
+    </insert>
+
+    <delete id="deleteById">
+        delete from goods where id = #{id}
+    </delete>
+
+    <update id="update">
+        update goods set name=#{name},price=#{price},detail=#{detail} where id=#{id}
+    </update>
+
+    <select id="selectById" resultType="Goods">
+        select * from goods where id=#{id}
+    </select>
+
+    <select id="selectAll" resultType="Goods">
+        select * from goods
+    </select>
+
+</mapper>
