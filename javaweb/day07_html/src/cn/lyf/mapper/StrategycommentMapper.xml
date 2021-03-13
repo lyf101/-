@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lyf.mapper.StrategycommentMapper">
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into strategycomment values (#{id},#{user_id},#{createTime},
+        #{content},#{imgUrls},#{starNum},#{strategy_id},
+        #{state},#{commentTime})
+    </insert>
+
+    <delete id="deleteById">
+        delete from strategycomment where id = #{id}
+    </delete>
+
+    <update id="update">
+        update strategycomment set user_id=#{user_id},createTime=#{createTime},content=#{content},imgUrls=#{imgUrls},starNum=#{starNum},strategy_id=#{strategy_id},
+        state=#{state},commentTime=#{commentTime} where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="Strategycomment">
+        select * from Strategycomment where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="Strategycomment">
+        select * from Strategycomment
+    </select>
+</mapper>

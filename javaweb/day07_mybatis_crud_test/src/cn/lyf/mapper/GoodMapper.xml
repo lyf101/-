@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lyf.mapper.GoodMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into good values(#{id},#{productName},#{dirName},
+        #{costPrice},#{cutoff},#{salePrice},#{supplier},#{brand},
+        #{place},#{sellingPoint},#{period},#{productDate},#{storage})
+    </insert>
+
+    <delete id="deleteById">
+        delete from good where id = #{id}
+    </delete>
+
+    <update id="update">
+        update good set productName=#{productName},dirName=#{dirName},
+        costPrice=#{costPrice},cutoff=#{cutoff},salePrice=#{salePrice},
+        supplier=#{supplier},brand=#{brand},place=#{place},
+        sellingPoint=#{sellingPoint},period=#{period},
+        productDate=#{productDate},storage=#{storage} where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="Good">
+        select * from good where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="Good">
+        select * from good
+    </select>
+</mapper>

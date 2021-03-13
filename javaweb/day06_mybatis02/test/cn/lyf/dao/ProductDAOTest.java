@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 /**
  * Date:2021/3/11 20:49
