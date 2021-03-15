@@ -37,8 +37,8 @@ public class IStrategycommentDAOTest {
     public void update() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date createDate = sdf.parse("1997-10-13");
-        Date commendTime = sdf.parse("2021-2-23");
-        Strategycomment strategycomment = new Strategycomment(3L,35L,createDate,"foller","www.bilibili.com",2,2L,2,commendTime);
+        Date commentTime = sdf.parse("2021-2-23");
+        Strategycomment strategycomment = new Strategycomment(3L,35L,createDate,"foller","www.bilibili.com",2,2L,2,commentTime);
         strategycommentDAO.update(strategycomment);
     }
 

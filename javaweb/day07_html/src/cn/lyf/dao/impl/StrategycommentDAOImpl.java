@@ -23,7 +23,7 @@ public class StrategycommentDAOImpl implements IStrategycommentDAO {
     @Override
     public void deleteById(Long id) {
         SqlSession sqlSession = MybatisUtil.openSqlSession();
-        sqlSession.delete("cn.lyf.mapper.StrategycommentMapper.delete",id);
+        sqlSession.delete("cn.lyf.mapper.StrategycommentMapper.deleteById",id);
         sqlSession.commit();
         sqlSession.close();
     }

@@ -15,7 +15,7 @@
 
     <update id="update">
         update strategycomment set user_id=#{user_id},createTime=#{createTime},content=#{content},imgUrls=#{imgUrls},starNum=#{starNum},strategy_id=#{strategy_id},
-        state=#{state},commentTime=#{commentTime} where id = #{id}
+        state=#{state},commendTime=#{commentTime} where id = #{id}
     </update>
 
     <select id="selectById" resultType="Strategycomment">
