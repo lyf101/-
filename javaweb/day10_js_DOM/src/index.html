@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <script type="text/javascript">
+        function fun1() {
+            var span1 = document.getElementById("span1");
+            var div1 = document.getElementById("div1");
+            div1.appendChild(span1)
+        }
+
+        function fun2() {
+            var span = document.getElementsByTagName("span")
+            var div2 = document.getElementById("div2");
+            for (i=0;i<span.length;i++){
+                div2.appendChild(span[0])
+            }
+        }
+        
+        function fun3() {
+            var div3 = document.getElementById("div3");
+            var newSpan = document.createElement("span");
+            newSpan.setAttribute("id","newSpan")
+            newSpan.innerText="newSpan"
+            console.log(newSpan);
+            div3.appendChild(newSpan)
+
+        }
+        
+        function fun4() {
+            var zhuge = document.createElement("option");
+            zhuge.setAttribute("id","zhuge");
+            zhuge.innerText="诸葛亮"
+            var guanyu = document.getElementById("item2");
+            var character = document.getElementById("character");
+            character.insertBefore(zhuge,guanyu)
+        }
+        
+        
+        function fun5() {
+            var weiyan = document.createElement("option");
+            var guanyu = document.getElementById("item2");
+            weiyan.innerText="魏延"
+            character.replaceChild(weiyan,guanyu)
+        }
+
+        function fun6() {
+            var zhangfei = document.getElementById("item3");
+            character.removeChild(zhangfei)
+        }
+    </script>
+</head>
+<body>
+<span id="span1">span1</span>
+<span id="span2">span2</span>
+<span id="span3">span3</span>
+<div id="div1" style="background-color: green">1</div>
+<div id="div2" style="background-color: yellow">2</div>
+<div id="div3" style="background-color: red;">3</div>
+<button onclick="fun1()">把span1添加到div1</button>
+<button onclick="fun2()">把span添加到div2</button>
+<button onclick="fun3()">新建span元素添加到div3</button><br/>
+<select id="character" size="7">
+    <option id="item1">刘备</option>
+    <option id="item2">关羽</option>
+    <option id="item3">张飞</option>
+    <option id="item4">赵云</option>
+</select>
+<button onclick="fun4()">在关羽之前插入诸葛亮</button>
+<button onclick="fun5()">把关羽换成魏延</button>
+<button onclick="fun6()">删除张飞</button><br/>
+</body>
+</html>
+

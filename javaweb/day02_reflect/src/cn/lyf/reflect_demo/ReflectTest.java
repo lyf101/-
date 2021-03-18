@@ -16,6 +16,7 @@ public class ReflectTest {
         //通过类名点class获取类的字节码对象
         Class<Person> aClass2 = Person.class;
 
+
         Person person = new Person();
         Class<? extends Person> aClass3 = person.getClass();
 
@@ -39,16 +40,16 @@ public class ReflectTest {
         Object obj = aClass.newInstance();
 
         //通过字节码对象获取所有方法(包括继承的)
-        /*Method[] methods = aClass.getMethods();
+        Method[] methods = aClass.getMethods();
         for (Method method : methods) {
             System.out.println(method);
-        }*/
+        }
 
         //通过字节码对象获取本类所有方法（lombok自动生成的方法获取不了）
-        /*Method[] declaredMethods = aClass.getDeclaredMethods();
+        Method[] declaredMethods = aClass.getDeclaredMethods();
         for (Method declaredMethod : declaredMethods) {
             System.out.println(declaredMethod);
-        }*/
+        }
 
 
         //通过方法名获取方法

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户新增</title>
+<script type="text/javascript">
+	window.onload=function () {
+
+        trNum = 1;
+
+
+        btn_submit.onclick=function () {
+            trNum++;
+			var username = document.getElementById("username");
+			var email = document.getElementById("email");
+			var tel = document.getElementById("tel");
+
+			var tr = document.createElement("tr");
+			trid = "tr"+trNum+"";
+			tr.setAttribute("id",trid)
+
+			var td1 = document.createElement("td");
+			td1.innerHTML=username.value
+			var td2 = document.createElement("td");
+			td2.innerText=email.value
+			var td3 = document.createElement("td");
+			td3.innerText=tel.value
+			var td4 = document.createElement("td");
+
+			var a = document.createElement("a");
+			dele = "javascript:delRow('tr"+trNum+"')"
+			a.setAttribute("href",dele);
+			a.innerText="删除"
+
+			td4.appendChild(a)
+			tr.appendChild(td1)
+			tr.appendChild(td2)
+			tr.appendChild(td3)
+			tr.appendChild(td4)
+
+			var userTbody = document.getElementById("userTbody");
+			userTbody.appendChild(tr)
+
+
+        }
+
+
+        btn_removeAll.onclick=function () {
+			var userTbody = document.getElementById("userTbody");
+			var childNodes = userTbody.childNodes;
+            var length = childNodes.length;
+			for (i=0;i<length;i++){
+                userTbody.removeChild(childNodes[0])
+            }
+        }
+
+    }
+
+    function delRow(tr) {
+		var trEle = document.getElementById(tr);
+		trEle.remove();
+    }
+</script>
+</head>
+<body>
+	<form name="userForm">
+		<center>
+			用户录入<br/>
+
+			用户名:<input id="username" name="username" type="text" size=15/>
+
+			E-mail:<input  id="email" name="email" type="text"  size=15/>
+
+			电话:<input id="tel" name="tel" type="text" size=15/>
+
+
+			<input type="button" value="添加" id="btn_submit"/>
+			<input type="button" value="删除所有" id="btn_removeAll"/>
+		</center>
+	</form>
+	<hr/>
+	<table border="1" align="center" cellpadding=0 cellspacing=0 width=400> 
+		<thead>
+			<tr>
+				<th>用户名</th>
+				<th>E-mail</th>
+				<th>电话</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody id="userTbody">
+			<tr id="tr1">
+				<td>张无忌</td>
+				<td>wujizhang@163.com</td>
+				<td>18212345678</td>
+				<td><a href="javascript:delRow('tr1')">删除</a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+</body>
+</html>
