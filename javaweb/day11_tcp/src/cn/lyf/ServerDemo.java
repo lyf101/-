@@ -1,8 +1,6 @@
 package cn.lyf;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,18 +13,28 @@ public class ServerDemo {
         ServerSocket socket = new ServerSocket(8080);
         Socket accept = socket.accept();
         InputStream inputStream = accept.getInputStream();
-
-        byte[] b = new byte[1024];
-        int len=0;
-        while ((len = inputStream.read(b)) != -1) {
-            System.out.println(new String(b,0,len));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String str = null;
+        while ((str = reader.readLine()) != null) {
+            if (str.equals("")) {
+                break;
+            }
+            System.out.println(str);
         }
+        accept.shutdownInput();
 
         OutputStream outputStream = accept.getOutputStream();
-        outputStream.write("你好阿，客户端".getBytes());
+        PrintWriter printWriter = new PrintWriter(new OutputStreamWriter(outputStream));
+        printWriter.println("HTTP/1.1 200 OK");
+        printWriter.println("Content-Type:text/html;charset=utf-8");
+        printWriter.println("");
+        printWriter.println("你好阿，客户端");
+        printWriter.flush();
         accept.shutdownOutput();
-
+        inputStream.close();
+        outputStream.close();
 
         accept.close();
+        socket.close();
     }
 }
