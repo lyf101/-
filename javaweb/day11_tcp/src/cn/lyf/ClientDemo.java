@@ -11,7 +11,7 @@ import java.net.Socket;
  */
 public class ClientDemo {
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("127.0.0.1", 8080);
+        Socket socket = new Socket("127.0.0.1", 8888);
         OutputStream outputStream = socket.getOutputStream();
 
         outputStream.write("你好，服务器".getBytes());
@@ -23,7 +23,7 @@ public class ClientDemo {
         while ((len = inputStream.read(b)) != -1) {
             System.out.println(new String(b, 0, len));
         }
-
+        socket.shutdownInput();
 
         socket.close();
 
