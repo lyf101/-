@@ -50,6 +50,5 @@ public class SelectProductServlet extends HttpServlet {
         out.println("</table></body></html>");
 
 
-
     }
 }
