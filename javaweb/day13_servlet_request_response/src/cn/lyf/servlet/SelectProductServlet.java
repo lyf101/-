@@ -27,7 +27,7 @@ public class SelectProductServlet extends HttpServlet {
         resp.setCharacterEncoding("utf8");
         PrintWriter out = resp.getWriter();
         out.println("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\">" +
-                "<title>Title</title></head><body><table border=\"1px\"><tr><td>商品id</td>" +
+                "<title>Title</title></head><body><a href=\"/insertProductView\">添加</a><table border=\"1px\"><tr><td>商品id</td>" +
                 "<td>商品名称</td><td>商品分类id</td><td>售价</td><td>供应商</td><td>品牌</td><td>折扣</td>" +
                 "<td>成本</td><td>操作</td></tr>\n");
         List<Product> products = productDAO.selectAll();
